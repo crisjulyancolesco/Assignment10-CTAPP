@@ -13,21 +13,25 @@
 
 import cv2
 import pyzbar.pyzbar as pyzbar
+import time
 
+# Open Webcam/Camera
 Cap = cv2.VideoCapture(0)
-while True:
-    _, Cam = Cap.read()
+Webcam = True
+
+# Scan QR code
+while Webcam == True:
+    good, Cam = Cap.read()
 
     DecodeQR = pyzbar.decode(Cam)
 
     for obj in DecodeQR:
-        print("QRData",obj.data)
-    
+        Info = obj.data
+        time.sleep(2)
+        Webcam = False
+
     cv2.imshow("Webcam", Cam)
+    cv2.waitKey(1)
 
-    Key = cv2.waitKey(1)
-    if Key == 1:
-        break
+print(Info)
 
-Cap.release(0)
-cv2.destroyAllWindows
