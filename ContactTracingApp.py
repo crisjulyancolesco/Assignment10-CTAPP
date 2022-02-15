@@ -12,16 +12,22 @@
 #	- Create a demo of your program (1-2 min) and send it directly to my messenger.
 
 import cv2
+import pyzbar.pyzbar as pyzbar
 
 Cap = cv2.VideoCapture(0)
 while True:
     _, Cam = Cap.read()
 
+    DecodeQR = pyzbar.decode(Cam)
+
+    for obj in DecodeQR:
+        print("QRData",obj.data)
+    
     cv2.imshow("Webcam", Cam)
 
     Key = cv2.waitKey(1)
-    if Key == 27:
+    if Key == 1:
         break
 
-Cap.release()
+Cap.release(0)
 cv2.destroyAllWindows
