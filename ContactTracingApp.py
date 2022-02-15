@@ -33,5 +33,6 @@ while Webcam == True:
     cv2.imshow("Webcam", Cam)
     cv2.waitKey(1)
 
-print(Info)
+File = open("test.txt", "w")
+File.write(str(Info) + "\n")
 
