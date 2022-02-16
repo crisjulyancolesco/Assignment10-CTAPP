@@ -14,6 +14,8 @@
 import cv2
 import pyzbar.pyzbar as pyzbar
 import time
+from datetime import date
+from datetime import datetime
 
 # Open Webcam/Camera
 Cap = cv2.VideoCapture(0)
@@ -36,7 +38,16 @@ while Webcam == True:
 # Decode the data
 DecodedInfo = Info.decode("utf-8")
 
-# Storing to Text file
-File = open("test.txt", "w")
-File.write(str(DecodedInfo) + "\n")
+# Adding current Time and Date
+DateToday = date.today()
+DateToday = DateToday.strftime("%m/%d/%y")
 
+TimeNow = datetime.now()
+TimeNow = TimeNow.strftime("%H:%M:%S")
+
+# Storing to Text file
+File = open("test.txt", "a")
+File.write(str(DecodedInfo) + "\n")
+File.write("Date Visited: " + DateToday + "\n")
+File.write("Time Visited: " + TimeNow + "\n")
+File.write("" + "\n")
