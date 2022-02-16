@@ -33,6 +33,10 @@ while Webcam == True:
     cv2.imshow("Webcam", Cam)
     cv2.waitKey(1)
 
+# Decode the data
+DecodedInfo = Info.decode("utf-8")
+
+# Storing to Text file
 File = open("test.txt", "w")
-File.write(str(Info) + "\n")
+File.write(str(DecodedInfo) + "\n")
 
