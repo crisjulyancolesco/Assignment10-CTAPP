@@ -33,7 +33,7 @@ TimeNow = datetime.now()
 TimeNow = TimeNow.strftime("%H:%M:%S")
 
 # Storing to Text file
-File = open("test.txt", "a")
+File = open("Compilation.txt", "a")
 File.write(str(DecodedInfo) + "\n")
 File.write("Date Visited: " + DateToday + "\n")
 File.write("Time Visited: " + TimeNow + "\n")
